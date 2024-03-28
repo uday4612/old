@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2017 at 11:08 AM
--- Server version: 5.7.11
--- PHP Version: 5.6.19
+-- Generation Time: Mar 28, 2024 at 07:45 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,7 +39,7 @@ CREATE TABLE `booking` (
   `Age` int(11) NOT NULL,
   `sex` varchar(10) NOT NULL,
   `Status` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `booking`
@@ -59,7 +60,9 @@ INSERT INTO `booking` (`uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `to
 ('Ankit', 12009, 'SL', '2017-04-27', '2017-04-27', 'SURAT', 'BARODA', 'ayush', 15, 'male', 'Confirmed'),
 ('ayush', 12931, '3A', '2017-04-28', '2017-04-28', 'SURAT', 'ANAND', 'akhil', 15, 'male', 'Confirmed'),
 ('ayush', 12932, '2A', '2017-05-31', '2017-04-28', 'SURAT', 'ANAND', 'smatrt', 56, 'male', 'Confirmed'),
-('ayush', 12932, '2A', '2017-05-31', '2017-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male', 'Confirmed');
+('ayush', 12932, '2A', '2017-05-31', '2017-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male', 'Confirmed'),
+('uday4612', 12931, '3A', '2024-03-24', '2024-03-24', 'BCT', 'ADI', 'Uday', 18, 'male', 'Waiting'),
+('uday4612', 12009, '2A', '2024-03-25', '2024-03-25', 'BCT', 'ADI', 'Uday', 18, 'male', 'Waiting');
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,7 @@ CREATE TABLE `interlist` (
   `Fri` varchar(2) NOT NULL,
   `Sat` varchar(2) NOT NULL,
   `Sun` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `interlist`
@@ -120,7 +123,7 @@ CREATE TABLE `seats_availability` (
   `AC` int(11) NOT NULL,
   `CC` int(11) NOT NULL,
   `SL` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `seats_availability`
@@ -1117,7 +1120,8 @@ INSERT INTO `seats_availability` (`Train_No`, `Train_Name`, `doj`, `1A`, `2A`, `
 (59442, 'AHMEDABAD PASS', '2017-07-05', 5, 5, 5, 5, 5, 5),
 (59442, 'AHMEDABAD PASS', '2017-07-06', 5, 5, 5, 5, 5, 5),
 (59442, 'AHMEDABAD PASS', '2017-07-07', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2017-07-08', 5, 5, 5, 5, 5, 5);
+(59442, 'AHMEDABAD PASS', '2017-07-08', 5, 5, 5, 5, 5, 5),
+(123456, 'uday', '2024-03-30', 12, 89, 78, 5, 8, 75);
 
 -- --------------------------------------------------------
 
@@ -1146,7 +1150,7 @@ CREATE TABLE `train_list` (
   `General` int(11) NOT NULL,
   `Ladies` int(11) NOT NULL,
   `Tatkal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `train_list`
@@ -1163,7 +1167,8 @@ INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, 
 (22222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
 (25222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
 (29333, 'KARNAVATI EXP', 'AHMD', 'BCT', '08:05', '21:10', 'Y', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(59442, 'AHMEDABAD PASS', 'ADI', 'BCT', '04:35', '1:35', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3);
+(59442, 'AHMEDABAD PASS', 'ADI', 'BCT', '04:35', '1:35', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
+(123456, 'uday', 'ud', 'pi', 'ay', 'ya', 'Y', 'N', 'Y', 'Y', 'Y', 'N', 'Y', 25000, 4000, 1000, 50000, 8, 9, 7);
 
 -- --------------------------------------------------------
 
@@ -1181,15 +1186,19 @@ CREATE TABLE `users` (
   `dob` varchar(20) NOT NULL,
   `mobile` bigint(10) NOT NULL,
   `ques` varchar(100) NOT NULL,
-  `ans` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ans` varchar(100) NOT NULL,
+  `role` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`f_name`, `l_name`, `email`, `password`, `gender`, `marital`, `dob`, `mobile`, `ques`, `ans`) VALUES
-('ayush', 'tripathi', 'ayushtripathi51@gmail.com', '123456789', 'male', 'unmarried', '1999-04-02', 9453890182, 'What was the name of your first school?', '123');
+INSERT INTO `users` (`f_name`, `l_name`, `email`, `password`, `gender`, `marital`, `dob`, `mobile`, `ques`, `ans`, `role`) VALUES
+('ayush', 'tripathi', 'ayushtripathi51@gmail.com', '123456789', 'male', 'unmarried', '1999-04-02', 9453890182, 'What was the name of your first school?', '123', 'user'),
+('admin', 'Patel', 'admin@gmail.com', 'admin123', 'male', 'unmarried', '2006-03-07', 9429301079, 'What is your pets name ?', 'papu', 'admin'),
+('Patel', 'Patel', 'yyyy@gmail.com', 'uday4612', 'male', 'married', '2006-03-01', 9429301079, 'What was the name of your first school?', 'ivhsui', 'user'),
+('Patel', 'Narendra', 'patel@gmail.com', 'uday4612', 'male', 'married', '2006-03-08', 9429301079, 'What is your favorite hero?', 'uday', 'user');
 
 --
 -- Indexes for dumped tables
@@ -1200,6 +1209,7 @@ INSERT INTO `users` (`f_name`, `l_name`, `email`, `password`, `gender`, `marital
 --
 ALTER TABLE `train_list`
   ADD PRIMARY KEY (`Number`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
